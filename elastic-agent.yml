@@ -1,0 +1,23 @@
+outputs:
+  default:
+    type: elasticsearch
+    hosts: ["http://localhost:9200"]
+    username: "elastic"
+    password: "VM6CKzz9-rvOZupP3yTp"
+
+inputs:
+  - type: logfile
+    enabled: true
+    paths:
+      - /var/log/syslog
+      - /var/log/auth.log
+    tags: ["system-logs"]
+
+  - type: system/metrics
+    enabled: true
+    period: 10s
+    metricsets:
+      - cpu
+      - memory
+      - disk
+      - network
